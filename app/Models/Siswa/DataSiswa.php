@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DataSiswa extends Model
 {
     protected $fillable = [
+        'id_user',
         'nisn',
         'nama_lengkap',
         'jenis_kelamin',

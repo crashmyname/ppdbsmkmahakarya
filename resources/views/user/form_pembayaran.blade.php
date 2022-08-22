@@ -15,12 +15,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
-                @error('nama_siswa')
+                @error('id_user')
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Anda Sudah melakukan Pembayaran
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @enderror
+                {{-- @error('nama_siswa')
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Anda Sudah melakukan Pembayaran
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @enderror --}}
                 <form action="/bayar" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
@@ -33,6 +39,7 @@
             <div class="form-group row">
                 <label for="nik_ayh" class="col-sm-4 col-form-label">Nama Siswa</label>
                 <div class="col-sm-8">
+                    <input type="hidden" name="id_user" value="{{auth()->user()->id}}">
                     <input type="text" name="nama_siswa" class="form-control" id="nama" value="{{auth()->user()->name}}" readonly>
                 </div>
             </div>

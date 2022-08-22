@@ -10,6 +10,7 @@ class DataPembayaran extends Model
 {
     use SoftDeletes;
     protected $fillable = [
+        'id_user',
         'nama_siswa',
         'jurusan',
         'total_biaya',

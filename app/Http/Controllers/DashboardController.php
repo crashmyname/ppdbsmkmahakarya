@@ -49,7 +49,8 @@ class DashboardController extends Controller
         // // ];
         // return view('user.form_pembayaran','$datasiswa');
         $datajurusan = DataJurusan::all();
-        return view('user.form_pembayaran',compact('datajurusan'));
+        $datapendidikan = DataPendidikan::join('users','users.id','=','data_pendidikans.id_user')->get();
+        return view('user.form_pembayaran',compact('datajurusan','datapendidikan'));
     }
 
     public function faq()
@@ -62,6 +63,7 @@ class DashboardController extends Controller
         // ddd($request);
         // return $request->file('bukti')->store('post-images');
         $validatedData = $request->validate([
+            'id_user' => 'required|unique:data_pembayarans',
             'nama_siswa' => 'required|max:50|unique:data_pembayarans',
             'jurusan' => 'required|max:40',
             'biaya' => 'required|max:255',

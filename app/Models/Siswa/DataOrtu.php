@@ -10,6 +10,7 @@ class DataOrtu extends Model
 {
     use SoftDeletes;
     protected $fillable = [
+        'id_user',
         'nama_ayah',
             'nik_ayah',
             'tempat_lahir_ayah',

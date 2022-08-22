@@ -81,7 +81,9 @@
                         {{-- <a class="collapse-item" href="/dataortu">Data Orang Tua</a> --}}
                         <a class="collapse-item" href="/datajurusan">Data Jurusan</a>
                         <a class="collapse-item" href="/datapembayaran">Data Pembayaran</a>
+                        @if(!auth()->check() || auth()->user()->email !== 'kepalasekolah@gmail.com')
                         <a class="collapse-item" href="/datauser">Data User</a>
+                        @endif
                         <a class="collapse-item" href="/laporan">Data Laporan</a>
                     </div>
                 </div>

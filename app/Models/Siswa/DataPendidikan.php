@@ -10,6 +10,7 @@ class DataPendidikan extends Model
 {
     use SoftDeletes;
     protected $fillable = [
+        'id_user',
         'jns_pendaftaran',
         'jalur_pendaftaran',
         'nama_sekolah',

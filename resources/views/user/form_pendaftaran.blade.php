@@ -33,6 +33,7 @@
                             <div class="form-group row">
                                 <label for="Nisn" class="col-sm-4 col-form-label">NISN (*)</label>
                                 <div class="col-sm-8">
+                                    <input type="hidden" name="id_user" value="{{auth()->user()->id}}">
                                     <input type="text" name="nisn" class="form-control" id="Nisn" placeholder="nisn.data.kemdikbud.go.id" value="{{old('nisn')}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required maxlength="12">
                                 </div>
                             </div>
@@ -48,8 +49,8 @@
                                 <div class="col-sm-8">
                                     <select type="text" name="jenis_kelamin" id="Jenis Kelamin" class="form-control" required>
                                         <option value="">-- Pilih --</option>
-                                        <option value="L">Laki-laki</option>
-                                        <option value="P">Perempuan</option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
                                     </select>
                                 </div>
                             </div>
