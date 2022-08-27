@@ -66,7 +66,7 @@ class DashboardController extends Controller
             'id_user' => 'required|unique:data_pembayarans',
             'nama_siswa' => 'required|max:50|unique:data_pembayarans',
             'jurusan' => 'required|max:40',
-            'biaya' => 'required|max:255',
+            // 'biaya' => 'required|max:255',
             'bukti' => 'image|file|max:2048'
         ]);
 

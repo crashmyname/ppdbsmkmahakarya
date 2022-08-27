@@ -137,7 +137,7 @@ class AdminController extends Controller
         // $data = DataOrtu::find('id_ortu',$id);
         // $data = DataPendidikan::find('id',$id);
         // $data->delete();
-        $request->session()->flash('delete', 'Data telah dihapus');
+        $request->session()->flash('delete', 'Data Berhasil dihapus');
         return redirect('/datasiswa');
     }
 
@@ -285,9 +285,56 @@ class AdminController extends Controller
     public function delpembayaran(request $request,$id)
     {
         $datapembayaran = DataPembayaran::where('id_bayar',$id)->delete();
-        $request->session()->flash('delete', 'Data telah dihapus');
+        $request->session()->flash('delete', 'Data Berhasil dihapus');
         return redirect('/datapembayaran');
     }
 
+    public function formeditpembayaran(request $request,$id)
+    {
+        $datapembayaran = DataPembayaran::where('id_bayar',$id)->get();
+        return view('admin.fepembayaran',compact('datapembayaran'));
+    }
+
+    public function epembayaran(request $request,$id)
+    {
+        $validatedData = $request->validate([
+            'nama_siswa' => 'required|max:50',
+            'jurusan' => 'required|max:40',
+            // 'biaya' => 'required|max:255',
+            'bukti' => 'image|file|max:2048'
+        ]);
+        if($request->file('bukti')){
+            $validatedData['bukti'] = $request->file('bukti')->store('post-image');
+        }
+        DataPembayaran::where('id_bayar',$id)->update($validatedData);
+        $request->session()->flash('update', 'Data berhasil diubah');
+        return redirect('/datapembayaran');
+    }
+
+    public function feuser(request $request,$id)
+    {
+        $datauser = DataUser::where('id',$id)->get();
+        return view('admin.feuser',compact('datauser'));
+    }
+
+    public function euser(request $request,$id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:50',
+           'email' => 'required|email',
+           'password' => 'required|max:100',
+        ]);
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        DataUser::where('id',$id)->update($validatedData);
+        $request->session()->flash('update', 'Data berhasil diubah');
+        return redirect('/datauser');
+    }
+
+    public function deluser(request $request,$id)
+    {
+        $datauser = DataUser::where('id',$id)->delete();
+        $request->session()->flash('delete', 'Data Berhasil dihapus');
+        return redirect('/datauser');
+    }
 
 }

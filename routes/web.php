@@ -77,4 +77,9 @@ Route::middleware(['auth', 'ceklevel'])->group(function () {
     Route::get('/tampildetail/{nama_sekolah}',[AdminController::class, 'dlaporan']);
     Route::get('/tampildetails/{jurusan}',[AdminController::class, 'djlaporan']);
     Route::post('/admlogout', [AdminController::class, 'logoutadmin']);
+    Route::get('/fepembayaran/{id_bayar}',[AdminController::class, 'formeditpembayaran']);
+    Route::post('/epembayaran/{id_bayar}',[AdminController::class, 'epembayaran']);
+    Route::get('/feuser/{id}',[AdminController::class, 'feuser']);
+    Route::post('/euser/{id}',[AdminController::class, 'euser']);
+    Route::delete('/deluser/{id}',[AdminController::class, 'deluser']);
 });

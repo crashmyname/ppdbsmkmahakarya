@@ -17,8 +17,8 @@
             </div>
             @endif
             @if(session()->has('delete'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('sukses')}}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ session('delete')}}
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
